@@ -383,7 +383,11 @@
 "Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs"
 "Assets/Scripts/Multiplayer/ConnectToServer.cs"
 "Assets/Scripts/Multiplayer/LobbyManager.cs"
+"Assets/Scripts/Multiplayer/PlayerItem.cs"
+"Assets/Scripts/Multiplayer/PlayerSpawner.cs"
 "Assets/Scripts/Multiplayer/RoomItem.cs"
+"Assets/Scripts/Player/PlayerCamera.cs"
+"Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/SelectMenu/SelectMenuButtons.cs"
 "Assets/Scripts/StartMenu/PlayerInput.cs"
 -langversion:9.0
