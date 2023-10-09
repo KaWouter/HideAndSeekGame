@@ -4,26 +4,33 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    //UI FIELDS
     public InputField roomInputField;
     public GameObject lobbyPanel;
     public GameObject roomPanel;
     public Text roomName;
-
+    //ROOM ITEM FIELDS
     public RoomItem roomItemPrefab;
     List<RoomItem> roomItemsList = new List<RoomItem>();
     public Transform contentObjects;
-
+    //UPDATING LOBBY LIST FIELDS
     public float timeBetweenUpdates = 1.5f;
     float nextUpdateTime;
-
+    //PLAYER DISPLAY ITEM FIELDS
     public List<PlayerItem> playerItemsList = new List<PlayerItem>();
     public PlayerItem playerItemPrefab;
     public Transform playerItemParent;
 
     public GameObject playButton;
+
+    //LOBBY CREATOR FIELDS
+    public Text currentMaxPlayersText;
+    public int currentMaxPlayers = 4;
+    public const int maxPlayers = 5;
 
     private void Start()
     {
@@ -51,7 +58,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if(roomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 3});
+            RoomOptions roomOptions =
+            new RoomOptions()
+            {
+                IsVisible = true,
+                IsOpen = true,
+                MaxPlayers = currentMaxPlayers,
+            };
+            Hashtable RoomCustomProps = new Hashtable();
+            RoomCustomProps.Add("MAP", 0);
+            //NO GAMEMODES YET ADDED BUT GOOD FOR FUTURE
+            //RoomCustomProps.Add(GAME_MODE_PROP_KEY, desiredGamemode);
+            roomOptions.CustomRoomProperties = RoomCustomProps;
+
+            string[] customPropsForLobby = { "MAP" };
+
+            roomOptions.CustomRoomPropertiesForLobby = customPropsForLobby;
+            PhotonNetwork.CreateRoom(roomInputField.text, roomOptions);
         }
     }
 
@@ -85,6 +108,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObjects);
             newRoom.SetRoomName(room.Name);
+            newRoom.setMaxPlayers(room.MaxPlayers);
             roomItemsList.Add(newRoom);
         }
     }
@@ -137,4 +161,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         UpdatePlayerList();
     }
+    
+    public void OnClickAddMaxPlayers()
+    {
+        if (currentMaxPlayers != maxPlayers)
+        {
+            currentMaxPlayers++;
+            currentMaxPlayersText.text = currentMaxPlayers.ToString();
+        } 
+    }
+
+    public void OnClickRemoveMaxPlayers()
+    {
+        if (currentMaxPlayers != 2)
+        {
+            currentMaxPlayers--;
+            currentMaxPlayersText.text = currentMaxPlayers.ToString();
+        }
+    }
+
 }

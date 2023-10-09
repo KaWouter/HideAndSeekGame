@@ -94,7 +94,13 @@ ScriptsOnlyBuild:
     methodName: OnClickCreate
   - assembly: Assembly-CSharp
     fullTypeName: LobbyManager
+    methodName: OnClickAddMaxPlayers
+  - assembly: Assembly-CSharp
+    fullTypeName: LobbyManager
     methodName: OnClickLeaveRoom
+  - assembly: Assembly-CSharp
+    fullTypeName: LobbyManager
+    methodName: OnClickRemoveMaxPlayers
   sceneClasses:
     Assets/Scenes/Lobby.unity:
     - Class: 1
@@ -1450,7 +1456,7 @@ ScriptsOnlyBuild:
     className: IngameControlPanel
   - hash:
       serializedVersion: 2
-      Hash: c4a0d04dfcd3f060f8d88b8f80a01bb5
+      Hash: cf2667603c4e00a1a16e4efc578105de
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RoomItem
@@ -1900,7 +1906,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomExpectedUsersProperty
   - hash:
       serializedVersion: 2
-      Hash: f1f575cd73cea0a54b8a49b53d0a89dc
+      Hash: f75ab82beaa76849fca12fcb808856c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyManager

@@ -1,0 +1,38 @@
+----------
+ESSENTIALS
+----------
+
+-add lobby player count and max player in lobby
+*example 1/4, 3/4, lobby full
+
+-add shooter/victim role selection
+*5 player games, 1 shooter, 4 victims
+
+-add player script / info script
+*health, role, name...
+
+
+
+---------
+GAMEPLAY
+---------
+
+***************
+SHOOTER/HUNTER
+***************
+-Shooting mechanic (syncing multiplayer)
+-Shooter outline when shooting 
+-Perks (silencer, ammo pack)
+
+***************
+VICTIM/HIDER
+***************
+-sprinting / stamina
+-healing (medkits, food,....)
+
+**************
+MAPS FEATURES
+**************
+-security cameras system
+-locker hiding mechanic
+
